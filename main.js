@@ -7,17 +7,17 @@ try {
   // ──────────────────────────────
   // 1. GET INPUT
   // ──────────────────────────────
-  const input            = await Actor.getInput();
-  const serviceTagName   = input.fileName          || '';
-  const salesNavigatorUrl= input.salesNavigatorUrl || '';
-  const linkedinCookie   = input.linkedinCookie    || '';
-  const leadCount        = parseInt(input.leadCount || '100');
+  const input             = await Actor.getInput();
+  const serviceTagName    = input.fileName          || '';
+  const salesNavigatorUrl = input.salesNavigatorUrl || '';
+  const linkedinCookie    = input.linkedinCookie    || '';
+  const leadCount         = parseInt(input.leadCount || '100');
 
-  const serviceName      = 'LinkedIn Sales Navigator Scraper';
-  const serviceOption1   = 'sales_navigator';
-  const requestSource    = 'Sales_Navigator_Scraper_AP';
-  const boomerangInputUrl= 'https://s1.boomerangserver.co.in/webhook/sales-navigator-scraper';
-  const boomerangStatUrl = 'https://s1.boomerangserver.co.in/webhook/sales-navigator-scraper-stats';
+  const serviceName       = 'LinkedIn Sales Navigator Scraper';
+  const serviceOption1    = 'sales_navigator';
+  const requestSource     = 'Sales_Navigator_Scraper_AP';
+  const boomerangInputUrl = 'https://s1.boomerangserver.co.in/webhook/sales-navigator-scraper';
+  const boomerangStatUrl  = 'https://s1.boomerangserver.co.in/webhook/sales-navigator-scraper-stats';
 
   console.log('Tag Name  :', serviceTagName);
   console.log('Service   :', serviceName);
@@ -41,11 +41,11 @@ try {
   // ──────────────────────────────
   // 2. BUILD PAYLOAD
   // ──────────────────────────────
-  const rowCount    = leadCount;
-  const fileName    = serviceTagName.replace(/[^a-zA-Z0-9]/g, '_')
-                    + '_'
-                    + new Date().toISOString().replace(/[:.]/g, '-')
-                    + '.csv';
+  const rowCount = leadCount;
+  const fileName = serviceTagName.replace(/[^a-zA-Z0-9]/g, '_')
+                 + '_'
+                 + new Date().toISOString().replace(/[:.]/g, '-')
+                 + '.csv';
 
   // ──────────────────────────────
   // 3. GET APIFY RUN DETAILS
@@ -176,9 +176,9 @@ try {
           serviceTagName,
           rowCount,
           creditsCost,
-          salesNavigatorUrl,     // ← key difference from profile scraper
-          linkedinCookie,        // ← pass cookie securely
-          uploadedFile   : '',
+          salesNavigatorUrl,
+          linkedinCookie,
+          uploadedFile     : '',
           fileName,
           boomerangInputUrl,
           service_option_1 : serviceOption1,
@@ -342,23 +342,27 @@ try {
               headers: { 'Content-Type': 'application/json' },
               signal : AbortSignal.timeout(30000),
               body   : JSON.stringify({
-                userId, runId, time, serviceTagName,
-                rowCount    : job.batch_size || rowCount,
+                userId,
+                runId,
+                time,
+                serviceTagName,
+                rowCount          : job.batch_size || rowCount,
                 creditsCost,
                 request_id,
-                requestStatus    : 'Error',
+                requestStatus     : 'Error',
                 driveInputLink,
                 boomerangOutputUrl: `https://s1.boomerangserver.co.in/webhook/sales-navigator-scraper-output?request_id=${request_id}`,
                 batch_number,
                 request_unique_id,
                 batchFolderId,
-                service_option_1 : serviceOption1,
-                service_name     : serviceName,
-                request_source   : requestSource,
-                reason           : `Timed out after ${maxAttempts} attempts`
+                service_option_1  : serviceOption1,
+                service_name      : serviceName,
+                request_source    : requestSource,
+                reason            : `Timed out after ${maxAttempts} attempts`
               })
             }
           );
+          console.log(`  📤 Batch ${batch_number} — Error status sent to webhook.`);
         } catch (err) {
           console.log(`  ⚠️ Batch ${batch_number} — Failed to notify webhook: ${err.message}`);
         }
@@ -384,12 +388,13 @@ try {
         batchResults.push({
           batch_number,
           request_id,
-          status             : result.status || 'Error',
-          profiles_found     : 0,
-          profiles_not_found : 0,
-          output_url         : ''
+          status         : result.status || 'Error',
+          leads_found    : 0,
+          leads_not_found: 0,
+          output_url     : ''
         });
         allOutputLinks.push('');
+        console.log(`  ⚠️ Batch ${batch_number} (failed) — skipped dataset push to preserve column order.`);
         continue;
       }
 
@@ -411,7 +416,10 @@ try {
             headers: { 'Content-Type': 'application/json' },
             signal : AbortSignal.timeout(60000),
             body   : JSON.stringify({
-              userId, runId, time, serviceTagName,
+              userId,
+              runId,
+              time,
+              serviceTagName,
               rowCount         : job.batch_size || rowCount,
               creditsCost,
               request_id,
