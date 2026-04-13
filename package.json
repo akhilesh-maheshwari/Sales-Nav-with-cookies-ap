@@ -1,0 +1,16 @@
+{
+  "name": "linkedin-sales-navigator-scraper",
+  "version": "1.0.0",
+  "description": "LinkedIn Sales Navigator Scraper Actor for Apify",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "apify": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
