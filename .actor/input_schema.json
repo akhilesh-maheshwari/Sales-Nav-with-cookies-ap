@@ -8,14 +8,16 @@
       "title": "Please share the complete LinkedIn Sales Navigator Search URL.",
       "type": "string",
       "description": "Full LinkedIn Sales Navigator search URL (company or people search).",
-      "editor": "textfield"
+      "editor": "textfield",
+      "prefill": "https://www.linkedin.com/sales/search/people?query=(filters%3AList((type%3AINDUSTRY%2Cvalues%3AList((id%3A1%2CselectionType%3AINCLUDED)))))"
     },
     "linkedinCookie": {
       "title": "LinkedIn Cookie (required)",
       "type": "string",
       "description": "Your LinkedIn session cookie (li_at value).",
       "editor": "textfield",
-      "isSecret": true
+      "isSecret": true,
+      "prefill": "AQEFAaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890"
     },
     "leadCount": {
       "title": "How many leads you want?",
@@ -23,13 +25,15 @@
       "description": "Number of leads to scrape.",
       "editor": "select",
       "enum": ["100", "200", "300", "400", "500", "600", "700", "800", "900", "1000", "1100", "1200", "1300", "1400", "1500", "1600", "1700", "1800", "1900", "2000", "2100", "2200", "2300", "2400", "2500"],
-      "default": "100"
+      "default": "100",
+      "prefill": "100"
     },
     "fileName": {
       "title": "Name your result file",
       "type": "string",
       "description": "Tag name for your output file (no special characters).",
-      "editor": "textfield"
+      "editor": "textfield",
+      "prefill": "my_leads_export"
     }
   },
   "required": ["salesNavigatorUrl", "linkedinCookie", "leadCount", "fileName"]
