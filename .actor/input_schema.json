@@ -1,0 +1,36 @@
+{
+  "title": "LinkedIn Sales Navigator Scraper",
+  "description": "Scrape leads from LinkedIn Sales Navigator.",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "salesNavigatorUrl": {
+      "title": "Please share the complete LinkedIn Sales Navigator Search URL.",
+      "type": "string",
+      "description": "Full LinkedIn Sales Navigator search URL (company or people search).",
+      "editor": "textfield"
+    },
+    "linkedinCookie": {
+      "title": "LinkedIn Cookie (required)",
+      "type": "string",
+      "description": "Your LinkedIn session cookie (li_at value).",
+      "editor": "textfield",
+      "isSecret": true
+    },
+    "leadCount": {
+      "title": "How many leads you want?",
+      "type": "integer",
+      "description": "Number of leads to scrape.",
+      "editor": "select",
+      "enum": [25, 50, 100, 200, 500, 1000],
+      "default": 100
+    },
+    "fileName": {
+      "title": "Name your result file",
+      "type": "string",
+      "description": "Tag name for your output file (no special characters).",
+      "editor": "textfield"
+    }
+  },
+  "required": ["salesNavigatorUrl", "linkedinCookie", "leadCount", "fileName"]
+}
