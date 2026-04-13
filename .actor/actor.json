@@ -1,0 +1,14 @@
+{
+  "actorSpecification": 1,
+  "name": "linkedin-sales-navigator-scraper",
+  "title": "LinkedIn Sales Navigator Scraper",
+  "description": "Scrape leads from LinkedIn Sales Navigator search results.",
+  "version": "0.0",
+  "buildTag": "latest",
+  "environmentVariables": {},
+  "defaultRunOptions": {
+    "build": "latest",
+    "timeoutSecs": 3600,
+    "memoryMbytes": 128
+  }
+}
