@@ -11,14 +11,13 @@
       "editor": "textfield",
       "prefill": "https://www.linkedin.com/sales/search/people?query=(filters%3AList((type%3AINDUSTRY%2Cvalues%3AList((id%3A1%2CselectionType%3AINCLUDED)))))"
     },
-    "linkedinCookie": {
-      "title": "LinkedIn Cookie (required)",
-      "type": "string",
-      "description": "Your LinkedIn session cookie (li_at value).",
-      "editor": "textfield",
-      "isSecret": true,
-      "prefill": "AQEFAaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890"
-    },
+   "linkedinCookie": {
+  "title": "LinkedIn Cookie (required)",
+  "type": "string",
+  "description": "Your LinkedIn session cookie (li_at value).",
+  "editor": "textfield",
+  "prefill": "AQEFAaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890"
+},
     "leadCount": {
       "title": "How many leads you want?",
       "type": "string",
