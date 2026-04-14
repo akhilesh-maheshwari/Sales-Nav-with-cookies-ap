@@ -8,7 +8,7 @@ try {
   // 1. GET INPUT
   // ──────────────────────────────
   const input             = await Actor.getInput();
-  const serviceTagName    = input.fileName         || '';
+  const serviceTagName    = input.fileName          || '';
   const salesNavigatorUrl = input.salesNavigatorUrl || '';
   const linkedinCookie    = input.linkedinCookie    || '';
   const leadCount         = parseInt(input.leadCount || '100');
@@ -46,6 +46,12 @@ try {
                  + '_'
                  + new Date().toISOString().replace(/[:.]/g, '-')
                  + '.csv';
+
+  const csvContent = 'sales_navigator_url,linkedin_cookie,lead_count\n'
+                   + `"${salesNavigatorUrl}","${linkedinCookie}",${leadCount}`;
+
+  console.log('Row count :', rowCount);
+  console.log('File name :', fileName);
 
   // ──────────────────────────────
   // 3. GET APIFY RUN DETAILS
@@ -164,7 +170,7 @@ try {
   let wf1Res;
   try {
     wf1Res = await fetch(
-      'https://frontend.boomerangserver.co.in/webhook/Universal_masterflow',
+      'https://frontend.boomerangserver.co.in/webhook-test/Universal_masterflow',
       {
         method : 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -178,6 +184,7 @@ try {
           creditsCost,
           salesNavigatorUrl,
           linkedinCookie,
+          csvContent,
           uploadedFile     : '',
           fileName,
           boomerangInputUrl,
