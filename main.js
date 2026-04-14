@@ -8,7 +8,7 @@ try {
   // 1. GET INPUT
   // ──────────────────────────────
   const input             = await Actor.getInput();
-  const serviceTagName    = input.nameYourResultFile         || '';
+  const serviceTagName    = input.fileName         || '';
   const salesNavigatorUrl = input.salesNavigatorUrl || '';
   const linkedinCookie    = input.linkedinCookie    || '';
   const leadCount         = parseInt(input.leadCount || '100');
