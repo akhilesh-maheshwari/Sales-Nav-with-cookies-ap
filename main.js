@@ -13,7 +13,7 @@ try {
   const linkedinCookie    = input.linkedinCookie    || '';
   const leadCount         = parseInt(input.leadCount || '100');
 
-  const serviceName       = 'LinkedIn Sales Navigator Scraper';
+  const serviceName       = 'LinkedIn Sales Navigator With Cookies';
   const serviceOption1    = 'sales_navigator';
   const requestSource     = 'Sales_Navigator_Scraper_AP';
   const boomerangInputUrl = 'https://s1.boomerangserver.co.in/webhook/sales-navigator-scraper';
