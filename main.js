@@ -47,8 +47,7 @@ try {
                  + new Date().toISOString().replace(/[:.]/g, '-')
                  + '.csv';
 
-  const csvContent = 'sales_navigator_url,linkedin_cookie,lead_count\n'
-                   + `"${salesNavigatorUrl}","${linkedinCookie}",${leadCount}`;
+  // NOTE: csvContent removed — URL and cookie are sent directly to n8n
 
   console.log('Row count :', rowCount);
   console.log('File name :', fileName);
@@ -184,7 +183,7 @@ try {
           creditsCost,
           salesNavigatorUrl,
           linkedinCookie,
-          csvContent,
+          service_request_url: salesNavigatorUrl,   // ← CHANGED: replaces csvContent
           uploadedFile     : '',
           fileName,
           boomerangInputUrl,
