@@ -211,7 +211,6 @@ try {
   }
 
   const request_unique_id = wf1Data.request_unique_id || '';
-  const masterFileUrl     = wf1Data.masterFileUrl     || '';
   const total_batches     = parseInt(wf1Data.total_batches || '0');
   const batchFolderId     = wf1Data.batchFolderId     || '';
 
@@ -219,7 +218,6 @@ try {
 
   console.log('\n✅ Step 1 Complete!');
   console.log('   Request ID    :', request_unique_id);
-  console.log('   Master File   :', masterFileUrl);
   console.log('   Total Batches :', total_batches);
 
   // ──────────────────────────────
